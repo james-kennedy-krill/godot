@@ -1,0 +1,11 @@
+res://scenes/player.tscn
+res://scripts/attack.gd
+res://scripts/HealthComponent.gd
+res://scripts/HitboxComponent.gd
+res://scenes/slime.tscn
+res://scenes/game.tscn
+res://scenes/platform.tscn
+res://scenes/coin.tscn
+res://scenes/killzone.tscn
+res://scripts/slime.gd
+res://scripts/health_bar.gd
