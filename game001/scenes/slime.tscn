@@ -62,9 +62,7 @@ target_position = Vector2(9, 0)
 position = Vector2(0, -7)
 target_position = Vector2(-9, 0)
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("HealthBar") instance=ExtResource("4_3j0sd")]
-MAX_HEALTH = null
-HealthBar = NodePath("HealthBar")
+[node name="HealthComponent" parent="." instance=ExtResource("4_3j0sd")]
 
 [node name="HealthBar" type="Node2D" parent="HealthComponent"]
 script = ExtResource("4_h3rcg")

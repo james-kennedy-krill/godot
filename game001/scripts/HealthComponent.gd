@@ -21,6 +21,4 @@ func damage(attack: Attack):
 
 
 
-func _on_health_change(health):
-	if health_bar:
-		
+
