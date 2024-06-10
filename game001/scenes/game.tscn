@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://domw1bxxv2knx"]
+[gd_scene load_steps=17 format=3 uid="uid://domw1bxxv2knx"]
 
 [ext_resource type="PackedScene" uid="uid://cadvro7468kmv" path="res://scenes/player.tscn" id="1_4p6if"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nnkov"]
@@ -458,6 +458,9 @@ _data = {
 "move": SubResource("Animation_nqkaw")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hppeq"]
+bg_color = Color(0.790093, 0.0341424, 0.78988, 1)
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -594,3 +597,36 @@ horizontal_alignment = 1
 
 [node name="Slime2" parent="." instance=ExtResource("6_3ckfq")]
 position = Vector2(-9, 128)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+clip_children = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="PlayerLevelProgress" type="ProgressBar" parent="CanvasLayer/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 41.0
+offset_bottom = 41.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_hppeq")
+step = 0.1
+show_percentage = false
+
+[node name="PlayerLevel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_3llh8")
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

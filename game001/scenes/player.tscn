@@ -195,6 +195,7 @@ size = Vector2(13, 20)
 z_index = 5
 collision_layer = 2
 script = ExtResource("1_wv4xy")
+INCREASE_XP_BY = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
@@ -221,3 +222,10 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-0.5, -10)
 shape = SubResource("RectangleShape2D_26gtr")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="leveled_up" from="." to="." method="_on_leveled_up"]
+[connection signal="xp_increased" from="." to="." method="_on_xp_increased"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

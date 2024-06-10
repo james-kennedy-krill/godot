@@ -1,14 +1,31 @@
 extends CharacterBody2D
 
+signal leveled_up(msg)
+signal xp_increased(val, val_pct)
 
-const SPEED = 130.0
-const JUMP_VELOCITY = -300.0
+@export var SPEED = 130.0
+@export var JUMP_VELOCITY = -300.0
+@export var INCREASE_XP_BY := 5
+@export var NEW_LEVEL_AT := 200
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+# character attributes
+var xp := 0
+var xp_pct: int:
+	get:
+		return (xp * 100) / NEW_LEVEL_AT
+	set(value):
+		xp = (int(value) * NEW_LEVEL_AT) / 100
+		
+var level := 1
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
+@onready var player_level = %PlayerLevel
+@onready var player_level_progress = %PlayerLevelProgress
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -44,3 +61,22 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_timer_timeout():
+	xp += INCREASE_XP_BY
+	if xp >= NEW_LEVEL_AT:
+		xp = 0
+		level += 1
+		leveled_up.emit("Level up! Now level " + str(level))
+	xp_increased.emit(xp, xp_pct)
+
+
+func _on_leveled_up(msg):
+	player_level.text = str(level)
+	print(msg)
+
+
+
+func _on_xp_increased(val, val_pct):
+	player_level_progress.value = val_pct
