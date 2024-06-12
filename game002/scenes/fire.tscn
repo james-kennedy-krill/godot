@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://yidclswlla37"]
+
+[ext_resource type="Texture2D" uid="uid://bixcw43fqxu2g" path="res://assets/sprites/Effects/Fire/Fire.png" id="1_r50mg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xqufe"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Fire" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_xqufe")
+position = Vector2(0, -44)
+amount = 1
+texture = ExtResource("1_r50mg")
+gravity = Vector2(0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0

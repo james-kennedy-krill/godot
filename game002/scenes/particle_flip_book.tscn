@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqck01csmorvo"]
+
+[ext_resource type="Texture2D" uid="uid://30o6xcptg8ux" path="res://assets/sprites/Effects/particles_flipbook_example.webp" id="1_5rye5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tnqfd"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_tnqfd")
+amount = 1
+texture = ExtResource("1_5rye5")
+spread = 13.78
+gravity = Vector2(0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0

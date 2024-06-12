@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwmva8q6md12q"]
+
+[ext_resource type="Texture2D" uid="uid://dvhemw3na6j1p" path="res://assets/sprites/Effects/Explosion/Explosions.png" id="1_3dvcf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tmkqq"]
+particles_animation = true
+particles_anim_h_frames = 9
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Explosion" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_tmkqq")
+amount = 1
+texture = ExtResource("1_3dvcf")
+gravity = Vector2(0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
