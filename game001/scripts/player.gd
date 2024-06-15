@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 signal leveled_up(msg)
 signal xp_increased(val, val_pct)
