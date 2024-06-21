@@ -1,5 +1,7 @@
 extends Node
 
+@export var DOUBLE_JUMP := false
+
 var score = 0
 var life = 3
 

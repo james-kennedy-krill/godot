@@ -9,9 +9,11 @@ signal xp_increased(val, val_pct)
 @export var INCREASE_XP_BY := 5
 @export var NEW_LEVEL_AT := 200
 
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+# double jump
+var double_jump_used := false
 
 # character attributes
 var xp := 0
@@ -28,6 +30,10 @@ var level := 1
 @onready var player_level = %PlayerLevel
 @onready var player_level_progress = %PlayerLevelProgress
 
+func jump():
+	jump_sound.play();
+	velocity.y = JUMP_VELOCITY
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -35,8 +41,13 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		jump_sound.play();
-		velocity.y = JUMP_VELOCITY
+		double_jump_used = false
+		jump()
+		
+	if Input.is_action_just_pressed("jump") and not is_on_floor():
+		if GameManager.DOUBLE_JUMP and not double_jump_used:
+			double_jump_used = true
+			jump()
 
 	# Get the input direction: -1, 0, 1
 	var direction = Input.get_axis("move_left", "move_right")

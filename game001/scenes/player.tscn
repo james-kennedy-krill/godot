@@ -226,6 +226,4 @@ shape = SubResource("RectangleShape2D_26gtr")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="leveled_up" from="." to="." method="_on_leveled_up"]
-[connection signal="xp_increased" from="." to="." method="_on_xp_increased"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
