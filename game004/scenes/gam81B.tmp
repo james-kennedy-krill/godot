@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuhcvnpc1p75x"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_hkj8k"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_p4ljw"]
+[ext_resource type="PackedScene" uid="uid://c6l1fva51bbbj" path="res://scenes/level_1.tscn" id="1_wxva4"]
+[ext_resource type="PackedScene" uid="uid://cbcpkii3ep0ov" path="res://scenes/player.tscn" id="2_a7ale"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_hkj8k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0)
+shadow_enabled = true
+
+[node name="CameraGimbal" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_p4ljw")
+target = NodePath("../Player")
+rotation_speed = 0.597
+mouse_sensitivity = 0.001
+max_zoom = 5.0
+zoom_speed = 0.17
+
+[node name="InnerGimbal" type="Node3D" parent="CameraGimbal"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraGimbal/InnerGimbal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+size = 19.0
+far = 1000.0
+
+[node name="Player" parent="." instance=ExtResource("2_a7ale")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18096, -10.3068)
+JUMP_VELOCITY = 3.0
+
+[node name="Levels" type="Node" parent="."]
+
+[node name="Level 1" parent="Levels" instance=ExtResource("1_wxva4")]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 247.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="UI/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -11.5
+offset_right = 30.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 54
+text = "Score: 0"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbcpkii3ep0ov"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_wyvpe"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_45bu7"]
+radius = 0.115
+height = 0.23
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_80fpp"]
+radius = 0.115
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 6
+script = ExtResource("1_wyvpe")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("SphereMesh_45bu7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_80fpp")

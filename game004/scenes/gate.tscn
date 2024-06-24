@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://chh0vo1eph4r6"]
+
+[ext_resource type="PackedScene" uid="uid://cx11dulpiaf3o" path="res://scenes/cone.tscn" id="1_3fj5c"]
+[ext_resource type="Script" path="res://scripts/gate.gd" id="1_d7ihi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2p1p"]
+size = Vector3(1, 0.18, 0.0439453)
+
+[node name="Gate" type="Node3D"]
+script = ExtResource("1_d7ihi")
+
+[node name="GatePivot" type="Node3D" parent="."]
+
+[node name="Cone" parent="GatePivot" instance=ExtResource("1_3fj5c")]
+
+[node name="Cone2" parent="GatePivot" instance=ExtResource("1_3fj5c")]
+
+[node name="HitArea" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="Collision" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
+shape = SubResource("BoxShape3D_b2p1p")
