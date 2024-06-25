@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 
 @export_range(1.0, 15.0, 1.0) var SPEED = 5.0
@@ -21,10 +22,15 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
+	var sprint = 1.0
+	if Input.is_action_pressed("sprint"):
+		sprint = 5.0
+	else:
+		sprint = 1.0
 	var direction = (camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED * sprint
+		velocity.z = direction.z * SPEED * sprint
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)

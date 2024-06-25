@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx11dulpiaf3o"]
+[gd_scene load_steps=9 format=3 uid="uid://cx11dulpiaf3o"]
 
 [ext_resource type="Script" path="res://scripts/cone.gd" id="1_62edl"]
 
@@ -16,6 +16,29 @@ height = 0.28
 height = 0.28
 radius = 0.09
 
+[sub_resource type="Curve" id="Curve_bcr12"]
+min_value = -471.3
+max_value = 240.93
+_data = [Vector2(0.26477, 0.332901), 0.0, 0.0, 0, 0, Vector2(0.717724, 0.720157), 0.0, 0.0, 0, 0, Vector2(0.97593, 0.316043), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ib8vi"]
+curve = SubResource("Curve_bcr12")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mixl5"]
+albedo_color = Color(1, 0.588235, 0, 1)
+emission_enabled = true
+emission = Color(0.635294, 0.635294, 0, 1)
+emission_energy_multiplier = 13.9
+ao_enabled = true
+ao_light_affect = 0.46
+ao_texture = SubResource("CurveTexture_ib8vi")
+
+[sub_resource type="SphereMesh" id="SphereMesh_p6ei3"]
+material = SubResource("StandardMaterial3D_mixl5")
+radius = 0.01
+height = 0.02
+
 [node name="Cone" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 5
@@ -31,3 +54,21 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
 shape = SubResource("CylinderShape3D_caxie")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305, 0)
+amount = 100
+lifetime = 2.0
+randomness = 1.0
+mesh = SubResource("SphereMesh_p6ei3")
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+hue_variation_min = -0.17
+hue_variation_max = 0.28

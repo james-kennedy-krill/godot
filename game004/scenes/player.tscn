@@ -10,7 +10,7 @@ height = 0.23
 radius = 0.115
 
 [node name="Player" type="CharacterBody3D"]
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_wyvpe")
 
 [node name="Pivot" type="Node3D" parent="."]
