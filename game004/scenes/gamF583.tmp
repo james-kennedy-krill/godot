@@ -1,20 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuhcvnpc1p75x"]
+[gd_scene load_steps=8 format=3 uid="uid://cuhcvnpc1p75x"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_2dx0v"]
+[ext_resource type="PackedScene" uid="uid://c36l3iso68nbo" path="res://scenes/game_manager.tscn" id="1_g5q3a"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_p4ljw"]
 [ext_resource type="PackedScene" uid="uid://c6l1fva51bbbj" path="res://scenes/level_1.tscn" id="1_wxva4"]
 [ext_resource type="PackedScene" uid="uid://cbcpkii3ep0ov" path="res://scenes/player.tscn" id="2_a7ale"]
 [ext_resource type="Script" path="res://scripts/Levels.gd" id="3_my2tc"]
-[ext_resource type="AudioStream" uid="uid://bf8q2undvhwg3" path="res://assets/sound/bling.wav" id="6_2blpw"]
-[ext_resource type="AudioStream" uid="uid://cp6og4duxynmp" path="res://assets/sound/theircoming3.ogg" id="7_pnhcp"]
-[ext_resource type="AudioStream" uid="uid://qc5yx8dhbxku" path="res://assets/sound/winfretless.ogg" id="8_opdr5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iu7x3"]
-bg_color = Color(0, 0, 0, 0.470588)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dlydb"]
 
@@ -31,7 +21,8 @@ expand_margin_bottom = 20.0
 shadow_offset = Vector2(1, 1)
 
 [node name="Game" type="Node"]
-script = ExtResource("1_2dx0v")
+
+[node name="GameManager" parent="." instance=ExtResource("1_g5q3a")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0)
@@ -53,8 +44,7 @@ size = 19.0
 far = 1000.0
 
 [node name="Player" parent="." instance=ExtResource("2_a7ale")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-SPEED = 7.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 JUMP_VELOCITY = 3.0
 
 [node name="Levels" type="Node" parent="." node_paths=PackedStringArray("levels")]
@@ -95,77 +85,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 54
 text = "Score: 0"
-
-[node name="TimerPanel" type="Panel" parent="HUD"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -247.0
-offset_bottom = 128.0
-grow_horizontal = 0
-mouse_filter = 2
-
-[node name="Time" type="Label" parent="HUD/TimerPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.5
-offset_top = -11.5
-offset_right = 30.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 54
-text = "00:00:00"
-
-[node name="CountdownPanel" type="Panel" parent="HUD"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -207.5
-offset_top = -144.5
-offset_right = 207.5
-offset_bottom = 144.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_iu7x3")
-
-[node name="CountdownLabel" type="Label" parent="HUD/CountdownPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.5
-offset_top = -132.5
-offset_right = 55.5
-offset_bottom = 132.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 194
-text = "3"
-
-[node name="Timer" type="Timer" parent="HUD/CountdownPanel"]
-autostart = true
-
-[node name="Bling" type="AudioStreamPlayer" parent="HUD/CountdownPanel"]
-stream = ExtResource("6_2blpw")
-volume_db = 10.0
-pitch_scale = 1.5
-
-[node name="Start" type="AudioStreamPlayer" parent="HUD/CountdownPanel"]
-stream = ExtResource("7_pnhcp")
-volume_db = 4.333
 
 [node name="LevelCompleted" type="PanelContainer" parent="HUD"]
 visible = false
@@ -220,10 +139,6 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_e3651")
 text = "NEXT LEVEL"
 
-[node name="Win" type="AudioStreamPlayer" parent="HUD/LevelCompleted"]
-stream = ExtResource("8_opdr5")
-volume_db = 5.0
-
 [node name="GameOver" type="PanelContainer" parent="HUD"]
 visible = false
 layout_mode = 1
@@ -251,5 +166,3 @@ text = "GAME OVER
 YOU WIN!"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="timeout" from="HUD/CountdownPanel/Timer" to="." method="_on_timer_timeout"]

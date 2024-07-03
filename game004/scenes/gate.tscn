@@ -1,10 +1,89 @@
-[gd_scene load_steps=4 format=3 uid="uid://chh0vo1eph4r6"]
+[gd_scene load_steps=9 format=3 uid="uid://chh0vo1eph4r6"]
 
 [ext_resource type="PackedScene" uid="uid://cx11dulpiaf3o" path="res://scenes/cone.tscn" id="1_3fj5c"]
 [ext_resource type="Script" path="res://scripts/gate.gd" id="1_d7ihi"]
+[ext_resource type="AudioStream" uid="uid://cv7dlmuxul15n" path="res://assets/sound/sound_coin.wav" id="3_1ld16"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d4giv"]
+size = Vector3(1, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2p1p"]
 size = Vector3(1, 0.18, 0.0439453)
+
+[sub_resource type="Animation" id="Animation_0qyrd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GatePivot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_todnw"]
+resource_name = "passed_through"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GatePivot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gar2g"]
+_data = {
+"RESET": SubResource("Animation_0qyrd"),
+"passed_through": SubResource("Animation_todnw")
+}
 
 [node name="Gate" type="Node3D"]
 script = ExtResource("1_d7ihi")
@@ -12,12 +91,26 @@ script = ExtResource("1_d7ihi")
 [node name="GatePivot" type="Node3D" parent="."]
 
 [node name="Cone" parent="GatePivot" instance=ExtResource("1_3fj5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.500928, 0, 0)
 
 [node name="Cone2" parent="GatePivot" instance=ExtResource("1_3fj5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500516, 0, 0)
 
-[node name="HitArea" type="Area3D" parent="."]
+[node name="Paint" type="MeshInstance3D" parent="GatePivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04, 0)
+mesh = SubResource("BoxMesh_d4giv")
+
+[node name="HitArea" type="Area3D" parent="GatePivot"]
 collision_layer = 2
 
-[node name="Collision" type="CollisionShape3D" parent="HitArea"]
+[node name="Collision" type="CollisionShape3D" parent="GatePivot/HitArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
 shape = SubResource("BoxShape3D_b2p1p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gar2g")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_1ld16")

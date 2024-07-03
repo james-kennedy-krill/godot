@@ -8,9 +8,13 @@ class_name Player
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera = $"../CameraGimbal"
+var controls = true
 
 
 func _physics_process(delta):
+	if not controls:
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -23,10 +27,10 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var sprint = 1.0
-	if Input.is_action_pressed("sprint"):
-		sprint = 5.0
-	else:
-		sprint = 1.0
+	#if Input.is_action_pressed("sprint"):
+		#sprint = 5.0
+	#else:
+		#sprint = 1.0
 	var direction = (camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED * sprint
@@ -36,3 +40,6 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func set_controls(value: bool):
+	controls = value

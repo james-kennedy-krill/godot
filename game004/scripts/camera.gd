@@ -44,7 +44,7 @@ func _input(event):
 	elif event.is_pressed():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _process(delta):
+func _process(_delta):
 	inner.rotation.x = clamp(inner.rotation.x, -1.4, -0.34)
 	scale = lerp(scale, Vector3.ONE * zoom, zoom_speed)
 	if target:
