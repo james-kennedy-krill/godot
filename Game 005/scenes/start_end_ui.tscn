@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://coix5rlg3ylyx"]
+
+[ext_resource type="Texture2D" uid="uid://b6ak8arkqb7i6" path="res://Mini Pixel Pack 3/UI objects/START (48 x 8).png" id="1_r2frk"]
+[ext_resource type="Texture2D" uid="uid://vd15ie8vmbh" path="res://Mini Pixel Pack 3/UI objects/GAME_OVER (72 x 8).png" id="2_kvj5r"]
+
+[node name="CenterContainer" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("1_r2frk")
+
+[node name="GameOver" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_kvj5r")

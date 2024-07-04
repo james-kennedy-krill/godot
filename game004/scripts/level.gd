@@ -13,14 +13,16 @@ var gate_scene = preload("res://scenes/gate.tscn")
 
 var gates_passed = 0
 var gate_area_radius = 0
+var level_active = false
 
 func _ready():
 	gate_area_radius = gate_location_radius + max_distance
 	size_stadium()
 	spawn_gates()
+	level_active = true
 	
 func _process(_delta):
-	if gates_passed >= number_of_gates:
+	if level_active and gates_passed >= number_of_gates:
 		end_level()
 
 func size_stadium():
@@ -43,5 +45,7 @@ func _on_gate_passed():
 	increase_score.emit(1)
 
 func end_level():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	level_active = false
 	level_complete.emit()
 	

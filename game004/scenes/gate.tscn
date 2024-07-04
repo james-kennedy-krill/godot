@@ -8,7 +8,7 @@
 size = Vector3(1, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2p1p"]
-size = Vector3(1, 0.18, 0.0439453)
+size = Vector3(0.73, 2, 0.044)
 
 [sub_resource type="Animation" id="Animation_0qyrd"]
 length = 0.001
@@ -104,7 +104,7 @@ mesh = SubResource("BoxMesh_d4giv")
 collision_layer = 2
 
 [node name="Collision" type="CollisionShape3D" parent="GatePivot/HitArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_b2p1p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

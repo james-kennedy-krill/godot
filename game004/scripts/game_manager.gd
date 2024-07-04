@@ -3,6 +3,8 @@ class_name GameManager
 
 @export var score := 0
 @export var start_time := 3
+@export_range(0, 3, 1) var current_level_index: int = 0
+
 var timer_time : int
 
 var stopwatch_running = false
@@ -20,17 +22,22 @@ var initial_time = 0
 @onready var timer_audio_start = $HUD/CountdownPanel/Start
 @onready var stopwatch_label : Label = $HUD/TimerPanel/Time
 @onready var win_audio = $HUD/LevelCompleted/Win
+@onready var camera_animation = $CameraGimbal/CameraAnimation
 
 var current_level
-var current_level_index: int = 0
-var levels_arr = ["res://scenes/level_1.tscn", "res://scenes/level_2.tscn", "res://scenes/level_3.tscn"]
+var levels_arr = [
+	"res://scenes/level_1.tscn", 
+	"res://scenes/level_2.tscn", 
+	"res://scenes/level_3.tscn",
+	"res://scenes/level_4.tscn"
+	]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer_time = start_time
 	level_button.connect("button_up", _on_next_level_button_press)
 	hud.get_node("LevelCompleted").hide()
-	current_level = levels.get_child(0)
+	load_next_level()
 	connect_level_signals()
 	start_level()
 
@@ -60,12 +67,12 @@ func reset_score():
 	update_score_label()
 
 func _on_level_complete():
-	win_audio.play()
-	player.controls = false
+	player.set_controls(false)
 	stop_stopwatch()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	hud.get_node("ScorePanel").hide()
 	hud.get_node("LevelCompleted").show()
+	win_audio.play()
+	
 	
 func _on_next_level_button_press():
 	current_level_index += 1
@@ -73,6 +80,7 @@ func _on_next_level_button_press():
 	
 func start_level():
 	player.set_controls(false)
+	camera_animation.play("camera_circle")
 	stopwatch_label.text = "00:00.00"
 	countdown_panel.show()
 	timer_audio_bling.play()

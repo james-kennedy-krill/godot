@@ -14,12 +14,16 @@ extends Node3D
 @export var min_zoom = 0.4
 @export_range(0.05, 1.0) var zoom_speed = 0.09
 
-var zoom = 1.5
+var zoom = 1
 
 @onready var inner = $InnerGimbal
+@onready var player = %Player
+
 
 func _unhandled_input(event):
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return
+	if not player.controls:
 		return
 	if event.is_action_pressed("cam_zoom_in"):
 		zoom -= zoom_speed
@@ -39,10 +43,11 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	elif event.is_pressed():
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if player.controls:
+		if event.is_action_pressed("ui_cancel"):
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		elif event.is_pressed():
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _process(_delta):
 	inner.rotation.x = clamp(inner.rotation.x, -1.4, -0.34)

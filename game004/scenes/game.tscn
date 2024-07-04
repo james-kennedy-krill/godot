@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuhcvnpc1p75x"]
+[gd_scene load_steps=15 format=3 uid="uid://cuhcvnpc1p75x"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_2dx0v"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_p4ljw"]
@@ -8,6 +8,43 @@
 [ext_resource type="AudioStream" uid="uid://bf8q2undvhwg3" path="res://assets/sound/bling.wav" id="6_2blpw"]
 [ext_resource type="AudioStream" uid="uid://cp6og4duxynmp" path="res://assets/sound/theircoming3.ogg" id="7_pnhcp"]
 [ext_resource type="AudioStream" uid="uid://qc5yx8dhbxku" path="res://assets/sound/winfretless.ogg" id="8_opdr5"]
+
+[sub_resource type="Animation" id="Animation_yre35"]
+resource_name = "camera_circle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rfrni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -5.08414, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_20mds"]
+_data = {
+"RESET": SubResource("Animation_rfrni"),
+"camera_circle": SubResource("Animation_yre35")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iu7x3"]
 bg_color = Color(0, 0, 0, 0.470588)
@@ -32,17 +69,19 @@ shadow_offset = Vector2(1, 1)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_2dx0v")
+current_level_index = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0)
 shadow_enabled = true
 
 [node name="CameraGimbal" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.363251, 0, 0.931691, 0, 1, 0, -0.931691, 0, 0.363251, 0, 0, 0)
 script = ExtResource("1_p4ljw")
 target = NodePath("../Player")
 rotation_speed = 0.597
 mouse_sensitivity = 0.001
-max_zoom = 5.0
+max_zoom = 4.0
 zoom_speed = 0.17
 
 [node name="InnerGimbal" type="Node3D" parent="CameraGimbal"]
@@ -52,7 +91,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 size = 19.0
 far = 1000.0
 
+[node name="CameraAnimation" type="AnimationPlayer" parent="CameraGimbal"]
+libraries = {
+"": SubResource("AnimationLibrary_20mds")
+}
+
 [node name="Player" parent="." instance=ExtResource("2_a7ale")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 SPEED = 7.0
 JUMP_VELOCITY = 3.0
@@ -76,8 +121,8 @@ mouse_filter = 2
 
 [node name="ScorePanel" type="Panel" parent="HUD"]
 layout_mode = 1
-offset_right = 247.0
-offset_bottom = 128.0
+offset_right = 372.0
+offset_bottom = 209.0
 mouse_filter = 2
 
 [node name="Score" type="Label" parent="HUD/ScorePanel"]
@@ -101,8 +146,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -247.0
-offset_bottom = 128.0
+offset_left = -362.0
+offset_bottom = 217.0
 grow_horizontal = 0
 mouse_filter = 2
 
@@ -123,19 +168,18 @@ theme_override_font_sizes/font_size = 54
 text = "00:00:00"
 
 [node name="CountdownPanel" type="Panel" parent="HUD"]
-visible = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -207.5
-offset_top = -144.5
+offset_top = -935.0
 offset_right = 207.5
-offset_bottom = 144.5
+offset_bottom = -646.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iu7x3")
 
