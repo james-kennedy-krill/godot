@@ -1,0 +1,39 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cfhfowhly2w1m"]
+
+[ext_resource type="Texture2D" uid="uid://xdehmbrip2q8" path="res://UnitOverlay/tileset_unit_overlay.svg" id="1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7agtt"]
+resource_name = "UnitOverlay"
+texture = ExtResource("1")
+texture_region_size = Vector2i(80, 80)
+0:0/next_alternative_id = 10
+0:0/0 = 0
+0:0/0/terrain = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+0:0/8 = 8
+0:0/9 = 9
+
+[resource]
+tile_size = Vector2i(80, 80)
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/1 = SubResource("TileSetAtlasSource_7agtt")

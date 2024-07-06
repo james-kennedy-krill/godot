@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2o46bnkslei3"]
+
+[ext_resource type="Texture2D" uid="uid://xdehmbrip2q8" path="res://UnitOverlay/tileset_unit_overlay.svg" id="1_3drov"]
+[ext_resource type="Script" path="res://scenes/unit_overlay.gd" id="2_fmbt2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pkyf"]
+texture = ExtResource("1_3drov")
+texture_region_size = Vector2i(80, 80)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+
+[sub_resource type="TileSet" id="TileSet_1emn0"]
+tile_size = Vector2i(80, 80)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/1 = SubResource("TileSetAtlasSource_7pkyf")
+
+[node name="UnitOverlay" type="TileMap"]
+modulate = Color(1, 1, 1, 0.356863)
+tile_set = SubResource("TileSet_1emn0")
+format = 2
+script = ExtResource("2_fmbt2")
