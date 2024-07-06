@@ -19,6 +19,7 @@ func _ready():
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
+		# TODO Need to figure out a way to get the coordinates of the grid below the mouse (with zoom)
 		cell = grid.calculate_grid_coordinates(event.position)
 	elif event.is_action_pressed("click") or event.is_action_pressed("ui_accept"):
 		accept_pressed.emit(cell)

@@ -58,7 +58,7 @@ _data = {
 "selected": SubResource("Animation_xuhc4")
 }
 
-[node name="Unit" type="Path2D"]
+[node name="Unit" type="Path2D" groups=["units"]]
 script = ExtResource("1_w76ac")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]

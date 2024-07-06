@@ -6,6 +6,8 @@ const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 @onready var grid: Resource = preload("res://Grid.tres")
 @onready var _unit_overlay: UnitOverlay = $UnitOverlay
 @onready var _unit_path: UnitPath = $UnitPath
+@onready var camera = $"../Camera2D"
+
 
 var _units := {}
 var _active_unit: Unit
@@ -28,7 +30,8 @@ func _reinitialize():
 		var unit := child as Unit
 		if not unit:
 			continue
-			
+		
+		camera.add_target(unit)
 		_units[unit.cell] = unit
 	
 func _flood_fill(cell: Vector2, max_distance: int) -> Array:
