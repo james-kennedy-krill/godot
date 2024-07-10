@@ -1,0 +1,3 @@
+[submodule "TEMPLATES/godot4-game-template"]
+	path = TEMPLATES/godot4-game-template
+	url = https://github.com/baconandgames/godot4-game-template.git
