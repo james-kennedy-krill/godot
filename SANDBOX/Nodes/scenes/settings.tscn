@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://d15b01ap4ppnd"]
+
+[ext_resource type="Texture2D" uid="uid://b4idq0kc6lrbo" path="res://Sprites/Button/Rect/Default.png" id="1_nseh7"]
+[ext_resource type="Texture2D" uid="uid://ct1bbnf4vxbhr" path="res://Sprites/Button/Rect/Hover.png" id="2_drdi8"]
+[ext_resource type="Texture2D" uid="uid://crph1q16b3v47" path="res://Sprites/Button/Icon/Play.png" id="3_xu4my"]
+[ext_resource type="Texture2D" uid="uid://b7qpa5tx0u8dx" path="res://Sprites/Button/Icon/Pause.png" id="4_hg36w"]
+[ext_resource type="Texture2D" uid="uid://das7d1i3n75k6" path="res://Sprites/Button/Icon/Replay.png" id="5_kqg1v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_splaj"]
+bg_color = Color(0, 0, 0, 0.458824)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.439216)
+shadow_size = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u0265"]
+texture = ExtResource("1_nseh7")
+texture_margin_left = 20.0
+texture_margin_top = 15.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tfgj6"]
+texture = ExtResource("2_drdi8")
+texture_margin_left = 20.0
+texture_margin_top = 15.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = -51.5
+offset_right = 219.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_splaj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Play" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/icon_max_width = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_u0265")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tfgj6")
+text = "PLAY"
+icon = ExtResource("3_xu4my")
+
+[node name="Pause" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/icon_max_width = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_u0265")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tfgj6")
+text = "PAUSE"
+icon = ExtResource("4_hg36w")
+
+[node name="Stop" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/icon_max_width = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_u0265")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tfgj6")
+text = "Loop"
+icon = ExtResource("5_kqg1v")

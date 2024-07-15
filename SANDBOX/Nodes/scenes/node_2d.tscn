@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyxnwyons54lq"]
+
+[ext_resource type="Script" path="res://scripts/node_2d.gd" id="1_tl2nx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rfubu"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_5c4be"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_7xwrg"]
+mesh = SubResource("PrismMesh_5c4be")
+base_texture = SubResource("CanvasTexture_rfubu")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_tl2nx")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("MeshTexture_7xwrg")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf4ykq8lp80nd"]
+
+[ext_resource type="Script" path="res://scripts/node.gd" id="1_lk7mx"]
+
+[node name="Node" type="Node"]
+editor_description = "A default node with a custom description.	"
+script = ExtResource("1_lk7mx")
+metadata/isNode = true
+metadata/internalName = ""
+metadata/version = 0.0
+metadata/center2d = Vector2(0, 0)
+metadata/center3d = Vector3(0, 0, 0)
+
+[node name="ChildNode1" type="Node" parent="."]
+
+[connection signal="ready" from="ChildNode1" to="." method="_on_child_node_1_ready"]
+[connection signal="renamed" from="ChildNode1" to="." method="_on_child_node_1_renamed"]

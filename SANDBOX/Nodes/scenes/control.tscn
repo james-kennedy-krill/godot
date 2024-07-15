@@ -1,0 +1,151 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4xpcok7iihi8"]
+
+[ext_resource type="Script" path="res://scripts/control.gd" id="1_1m23f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2xdo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boxjx"]
+bg_color = Color(4.78299e-07, 0.116316, 0.00695128, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh5mw"]
+bg_color = Color(4.33929e-07, 0.0975602, 0.00526268, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nttw8"]
+bg_color = Color(4.78299e-07, 0.116316, 0.00695128, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.392157)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1m23f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.07, 0.07, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r2xdo")
+
+[node name="Button1" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("../../../../MarginContainer2/VBoxContainer2/Panel3/Button3")
+focus_neighbor_top = NodePath("../../../../MarginContainer2/VBoxContainer2/Panel3/Button3")
+focus_neighbor_right = NodePath("../../../../MarginContainer2/VBoxContainer2/Panel2/Button2")
+focus_neighbor_bottom = NodePath("../../../../MarginContainer2/VBoxContainer2/Panel2/Button2")
+focus_next = NodePath("../../../../MarginContainer2/VBoxContainer2/Panel2/Button2")
+focus_previous = NodePath("../../../../MarginContainer2/VBoxContainer2/Panel3/Button3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_boxjx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gh5mw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gh5mw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nttw8")
+toggle_mode = true
+text = "PLAY"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r2xdo")
+
+[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("../../../../MarginContainer/VBoxContainer/Panel/Button1")
+focus_neighbor_top = NodePath("../../../../MarginContainer/VBoxContainer/Panel/Button1")
+focus_neighbor_right = NodePath("../../Panel3/Button3")
+focus_neighbor_bottom = NodePath("../../Panel3/Button3")
+focus_next = NodePath("../../Panel3/Button3")
+focus_previous = NodePath("../../../../MarginContainer/VBoxContainer/Panel/Button1")
+toggle_mode = true
+text = "SETTINGS"
+
+[node name="Panel3" type="Panel" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r2xdo")
+
+[node name="Button3" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("../../../../MarginContainer/VBoxContainer/Panel/Button1")
+focus_neighbor_top = NodePath("../../Panel2/Button2")
+focus_neighbor_right = NodePath("../../../../MarginContainer/VBoxContainer/Panel/Button1")
+focus_neighbor_bottom = NodePath("../../../../MarginContainer/VBoxContainer/Panel/Button1")
+focus_next = NodePath("../../../../MarginContainer/VBoxContainer/Panel/Button1")
+focus_previous = NodePath("../../Panel2/Button2")
+toggle_mode = true
+text = "QUIT"
