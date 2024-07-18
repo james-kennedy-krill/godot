@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://deg6ewsbxiij6"]
+
+[ext_resource type="PackedScene" uid="uid://d4m6xfqojtt3e" path="res://car.tscn" id="1_n7lob"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rh7lu"]
+
+[sub_resource type="Sky" id="Sky_sxh2l"]
+sky_material = SubResource("ProceduralSkyMaterial_rh7lu")
+
+[sub_resource type="Environment" id="Environment_cu6sx"]
+background_mode = 2
+sky = SubResource("Sky_sxh2l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_okmxr"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfs6c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6nas"]
+albedo_texture = SubResource("AtlasTexture_tfs6c")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oa7um"]
+size = Vector3(1000, 1, 1000)
+
+[sub_resource type="BoxMesh" id="BoxMesh_86ib2"]
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cu6sx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.08493, 0.996387, 0, -0.996387, -0.08493, 0, 39.7265, 0)
+light_energy = 0.1
+light_indirect_energy = 1.135
+light_volumetric_fog_energy = 1.27
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_okmxr")
+surface_material_override/0 = SubResource("StandardMaterial3D_w6nas")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_oa7um")
+
+[node name="VehicleBody3D" parent="." instance=ExtResource("1_n7lob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.843666, 0)
+
+[node name="World Objects" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World Objects"]
+transform = Transform3D(1.73205, 7.5, 0, -1, 12.9904, 0, 0, 0, 2, -10, 7, 16)
+mesh = SubResource("BoxMesh_86ib2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World Objects"]
+transform = Transform3D(-1.73205, -7.5, -1.74846e-07, -1, 12.9904, 0, 1.51421e-07, 6.55671e-07, -2, 0, 7, 16)
+mesh = SubResource("BoxMesh_86ib2")
+
+[node name="CameraGimble" type="Node3D" parent="."]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 15, 24, 0)
+
+[node name="InnerGimble" type="Node3D" parent="CameraGimble"]
+transform = Transform3D(-4.2222e-08, -0.258819, 0.965926, -1.13133e-08, 0.965926, 0.258819, -1, 0, -4.37114e-08, 8, 9.53674e-07, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraGimble/InnerGimble"]

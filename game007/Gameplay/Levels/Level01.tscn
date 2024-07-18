@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://dakphwh8q4546"]
+
+[ext_resource type="PackedScene" uid="uid://ek8rd3vbtwft" path="res://assets/StraightTrack.fbx" id="2_nmpxt"]
+[ext_resource type="PackedScene" uid="uid://csjckaxkbmbrw" path="res://assets/CornerTrack.fbx" id="3_vxbg5"]
+[ext_resource type="ArrayMesh" uid="uid://dp2iexaih8ng6" path="res://assets/Prop_Decorative_Fence_Curve_1x1.obj" id="4_bo2vk"]
+[ext_resource type="Texture2D" uid="uid://c4u2h6jf3dovv" path="res://assets/coast_sand_rocks_02_diff_4k.png" id="4_kmawf"]
+[ext_resource type="Texture2D" uid="uid://d1jxs1o0ld1gr" path="res://assets/coast_sand_rocks_02_nor_gl_4k.png" id="5_bddx5"]
+[ext_resource type="Texture2D" uid="uid://c3hs1vu20ygsx" path="res://assets/coast_sand_rocks_02_rough_4k.png" id="6_uxwdr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2m4c"]
+albedo_texture = ExtResource("4_kmawf")
+roughness_texture = ExtResource("6_uxwdr")
+normal_enabled = true
+normal_texture = ExtResource("5_bddx5")
+uv1_scale = Vector3(4, 0.25, 0)
+uv1_triplanar_sharpness = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fi5ip"]
+material = SubResource("StandardMaterial3D_m2m4c")
+size = Vector2(40, 2)
+
+[node name="Level01" type="Node2D"]
+
+[node name="Fences" type="Node" parent="."]
+
+[node name="PropDecorativeFenceCurve1x1" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 11)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x2" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 10)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x3" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 9)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x4" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 8)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x5" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 7)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x6" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 6)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x7" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 5)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x8" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 4)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x9" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 3)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x10" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 2)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x11" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 1)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="PropDecorativeFenceCurve1x12" type="MeshInstance3D" parent="Fences"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -261, 1.5, 0)
+mesh = ExtResource("4_bo2vk")
+skeleton = NodePath("../..")
+
+[node name="Track" type="Node" parent="."]
+
+[node name="Root Scene" parent="Track" instance=ExtResource("2_nmpxt")]
+
+[node name="Root Scene6" parent="Track" instance=ExtResource("2_nmpxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -240, 0, -120)
+
+[node name="Root Scene7" parent="Track" instance=ExtResource("2_nmpxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -240, 0, 0)
+
+[node name="Root Scene10" parent="Track" instance=ExtResource("2_nmpxt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120, 0, 120)
+
+[node name="Root Scene2" parent="Track" instance=ExtResource("3_vxbg5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -120)
+
+[node name="Root Scene4" parent="Track" instance=ExtResource("3_vxbg5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120, 0, -240)
+
+[node name="Root Scene5" parent="Track" instance=ExtResource("3_vxbg5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -240, 0, -240)
+
+[node name="Root Scene8" parent="Track" instance=ExtResource("3_vxbg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 120)
+
+[node name="Root Scene9" parent="Track" instance=ExtResource("3_vxbg5")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -240, 0, 120)
+
+[node name="Root Scene3" parent="Track" instance=ExtResource("3_vxbg5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -120, 0, -120)
+
+[node name="Root Scene11" parent="Track" instance=ExtResource("2_nmpxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("PlaneMesh_fi5ip")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 5, 0)
