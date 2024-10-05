@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cahbv811dpsaf"
+path="res://.godot/imported/race.obj-b63d140863d29b932abdf60fd3399ebe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/race.obj-b63d140863d29b932abdf60fd3399ebe.mesh"]
+
+source_file="res://Models/OBJ format/race.obj"
+dest_files=["res://.godot/imported/race.obj-b63d140863d29b932abdf60fd3399ebe.mesh", "res://.godot/imported/race.obj-b63d140863d29b932abdf60fd3399ebe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

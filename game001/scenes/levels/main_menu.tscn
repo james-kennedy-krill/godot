@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://bveqtwgoii231"]
+
+[ext_resource type="Script" path="res://scripts/main_menu_control.gd" id="1_s7mh6"]
+[ext_resource type="Texture2D" uid="uid://dpd1q1r6nhkgf" path="res://WallpaperEngineOverride_randomIXNLLD.jpg" id="2_vnj23"]
+[ext_resource type="FontFile" uid="uid://b7dcgljwd0flb" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_csixt"]
+[ext_resource type="Theme" uid="uid://0vdexqxo8dit" path="res://ui.tres" id="4_wq5o6"]
+[ext_resource type="ButtonGroup" uid="uid://dut55ta8etpe6" path="res://new_button_group.tres" id="5_vsgbx"]
+[ext_resource type="Script" path="res://scripts/play_button.gd" id="6_yxvhd"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s7mh6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vnj23")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 60.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_csixt")
+theme_override_font_sizes/font_size = 32
+text = "BALDING GABE 3.1"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -67.0
+offset_right = 111.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../Options")
+focus_previous = NodePath("../Quit")
+theme = ExtResource("4_wq5o6")
+toggle_mode = true
+button_group = ExtResource("5_vsgbx")
+text = "Play"
+script = ExtResource("6_yxvhd")
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Play")
+theme = ExtResource("4_wq5o6")
+toggle_mode = true
+button_group = ExtResource("5_vsgbx")
+text = "Options"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Options")
+theme = ExtResource("4_wq5o6")
+toggle_mode = true
+button_group = ExtResource("5_vsgbx")
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

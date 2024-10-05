@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://c6u4huysl4ouy"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ny416"]
+[ext_resource type="Texture2D" uid="uid://ct3llqmfosksw" path="res://Mini Pixel Pack 3/Player ship/Player_ship (16 x 16).png" id="2_v8eur"]
+[ext_resource type="Texture2D" uid="uid://7kkaonwwenj0" path="res://Mini Pixel Pack 3/Player ship/Boosters (16 x 16).png" id="3_g40vw"]
+[ext_resource type="Texture2D" uid="uid://f2fudum67dkv" path="res://Mini Pixel Pack 3/Player ship/Boosters_left (16 x 16).png" id="4_klhrt"]
+[ext_resource type="Texture2D" uid="uid://cdrslxqt2wqps" path="res://Mini Pixel Pack 3/Player ship/Boosters_right (16 x 16).png" id="5_438e8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfgk7"]
+atlas = ExtResource("3_g40vw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv8vy"]
+atlas = ExtResource("3_g40vw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ol2rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfgk7")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_tv8vy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3liuw"]
+atlas = ExtResource("4_klhrt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0n7q"]
+atlas = ExtResource("4_klhrt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykcrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3liuw")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_g0n7q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7omtr"]
+atlas = ExtResource("5_438e8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jjhn"]
+atlas = ExtResource("5_438e8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_roby4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7omtr")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_8jjhn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Player" type="RigidBody2D"]
+linear_damp = 0.5
+angular_damp = 2.0
+script = ExtResource("1_ny416")
+
+[node name="Ship" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_v8eur")
+hframes = 3
+frame = 1
+
+[node name="Gun1" type="Marker2D" parent="Ship"]
+position = Vector2(-1.448e-05, -4)
+rotation = -1.5708
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+rotation = 1.5708
+polygon = PackedVector2Array(-5, 7, -5, 4, -8, 4, -8, 2, -7, 2, -7, 1, -6, 1, -6, 0, -5, 0, -5, -4, -4, -4, -4, -1, -3, -1, -3, -4, -2, -4, -2, -5, -1, -5, -1, -7, 1, -7, 1, -5, 2, -5, 2, -4, 3, -4, 3, -1, 4, -1, 4, -4, 5, -4, 5, 0, 6, 0, 6, 1, 7, 1, 7, 2, 8, 2, 8, 4, 5, 4, 5, 7, 1, 7, 1, 6, -1, 6, -1, 7)
+
+[node name="Boosters" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-15, 0)
+rotation = 1.57079
+sprite_frames = SubResource("SpriteFrames_ol2rv")
+autoplay = "default"
+frame_progress = 0.137926
+
+[node name="BoostersLeft" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-11, -3)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ykcrp")
+autoplay = "default"
+frame_progress = 0.137926
+
+[node name="BoostersRight" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-11, 3)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_roby4")
+autoplay = "default"
+frame_progress = 0.349267

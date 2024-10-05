@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bq074rnhvuc5j"
+path="res://.godot/imported/debris-drivetrain.obj-6aedb21462d4565ae59a7cf1ee4571ef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/debris-drivetrain.obj-6aedb21462d4565ae59a7cf1ee4571ef.mesh"]
+
+source_file="res://Models/OBJ format/debris-drivetrain.obj"
+dest_files=["res://.godot/imported/debris-drivetrain.obj-6aedb21462d4565ae59a7cf1ee4571ef.mesh", "res://.godot/imported/debris-drivetrain.obj-6aedb21462d4565ae59a7cf1ee4571ef.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

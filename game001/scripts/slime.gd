@@ -5,9 +5,9 @@ const SPEED = 60
 
 var direction = 1
 
-var attack_damage := 10.0
-var knockback_force := 100.0
-var stun_time := 1.5
+@export var attack_damage := 1.0
+@export var knockback_force := 100.0
+@export var stun_time := 1.5
 
 @onready var ray_cast_left = $RayCastLeft
 @onready var ray_cast_right = $RayCastRight
@@ -26,8 +26,7 @@ func _process(delta):
 
 
 func _on_hitbox_component_body_entered(body):
-	print(body)
-	if body is HitboxComponent:
+	if body.is_in_group("Player"):
 		print("body has hitbox component")
 		var attack = Attack.new()
 		attack.attack_damage = attack_damage

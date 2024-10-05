@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://sbuaplheevtg"
+path="res://.godot/imported/wheel-dark.obj-4ab1a3c361133320b95338b529fc32de.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wheel-dark.obj-4ab1a3c361133320b95338b529fc32de.mesh"]
+
+source_file="res://Models/OBJ format/wheel-dark.obj"
+dest_files=["res://.godot/imported/wheel-dark.obj-4ab1a3c361133320b95338b529fc32de.mesh", "res://.godot/imported/wheel-dark.obj-4ab1a3c361133320b95338b529fc32de.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

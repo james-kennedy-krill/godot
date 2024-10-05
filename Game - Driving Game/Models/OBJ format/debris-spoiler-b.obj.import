@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bc4be5fr6y780"
+path="res://.godot/imported/debris-spoiler-b.obj-d717845d786c55d4ae6fd1fed3ec2478.mesh"
+
+[deps]
+
+files=["res://.godot/imported/debris-spoiler-b.obj-d717845d786c55d4ae6fd1fed3ec2478.mesh"]
+
+source_file="res://Models/OBJ format/debris-spoiler-b.obj"
+dest_files=["res://.godot/imported/debris-spoiler-b.obj-d717845d786c55d4ae6fd1fed3ec2478.mesh", "res://.godot/imported/debris-spoiler-b.obj-d717845d786c55d4ae6fd1fed3ec2478.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

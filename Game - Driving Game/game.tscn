@@ -1,28 +1,49 @@
-[gd_scene load_steps=10 format=3 uid="uid://deg6ewsbxiij6"]
+[gd_scene load_steps=17 format=3 uid="uid://deg6ewsbxiij6"]
 
-[ext_resource type="PackedScene" uid="uid://d4m6xfqojtt3e" path="res://car.tscn" id="1_n7lob"]
+[ext_resource type="Texture2D" uid="uid://c3tnu6af0pe7h" path="res://rosendal_plains_2_4k.hdr" id="1_paxrg"]
+[ext_resource type="PackedScene" uid="uid://da07vcglaej1e" path="res://racecar.tscn" id="2_pwe3i"]
+[ext_resource type="Texture2D" uid="uid://cidjrilwfja5k" path="res://Seamless-Black-Asphalt-Road-Texture.jpg" id="3_4qxfl"]
+[ext_resource type="Shader" path="res://game.gdshader" id="4_huqdh"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rh7lu"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_j3eyx"]
+panorama = ExtResource("1_paxrg")
 
 [sub_resource type="Sky" id="Sky_sxh2l"]
-sky_material = SubResource("ProceduralSkyMaterial_rh7lu")
+sky_material = SubResource("PanoramaSkyMaterial_j3eyx")
 
 [sub_resource type="Environment" id="Environment_cu6sx"]
 background_mode = 2
 sky = SubResource("Sky_sxh2l")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_okmxr"]
-size = Vector2(1000, 1000)
+[sub_resource type="BoxMesh" id="BoxMesh_05gs1"]
+size = Vector3(1000, 1, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tfs6c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6nas"]
 albedo_texture = SubResource("AtlasTexture_tfs6c")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oa7um"]
-size = Vector3(1000, 1, 1000)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_opbgc"]
+points = PackedVector3Array(-500, -0.5, -500, -500, 0.5, -500, 500, -0.5, -500, -500, -0.5, 500, -500, 0.5, 500, 500, 0.5, -500, 500, -0.5, 500, 500, 0.5, 500)
 
 [sub_resource type="BoxMesh" id="BoxMesh_86ib2"]
+
+[sub_resource type="Curve3D" id="Curve3D_gpaff"]
+_data = {
+"points": PackedVector3Array(-15.6677, -5.86903, -7.43607, 15.6677, 5.86903, 7.43607, 11.5281, -2.2768, -0.16877, -7.61592, 4.72135, -1.62783, 7.61592, -4.72135, 1.62783, 26.8614, 0.00012207, 23.4181, -9, 8, -2, 9, -8, 2, 78.219, 0, 10.5226, 7.04717, 5.95694, -11.9056, -7.04717, -5.95694, 11.9056, 109.449, 0.00012207, 39.0644, 10, -1, -2, -10, 1, 2, 39.0701, -4.39428, 54.5457, 10.3358, -10.1853, 5.5103, -10.3358, 10.1853, -5.5103, -39.6993, -2.09094, 53.5051, 2.91655, -6.79433, 8.04272, -2.91655, 6.79433, -8.04272, -60.5726, 12.9931, 28.3062, -18.3535, -0.88983, -3.60011, 18.3535, 0.88983, 3.60011, -27.6079, 0.0362377, -6.36511),
+"tilts": PackedFloat32Array(0.0725747, -1.309, 3.14159, 1.29377, -0.610865, -0.261799, -0.985312, -0.995146)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4r02q"]
+render_priority = 0
+shader = ExtResource("4_huqdh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qymu"]
+next_pass = SubResource("ShaderMaterial_4r02q")
+albedo_texture = ExtResource("3_4qxfl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnkqe"]
 
 [node name="Game" type="Node3D"]
 
@@ -37,31 +58,79 @@ light_volumetric_fog_energy = 1.27
 shadow_enabled = true
 
 [node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-mesh = SubResource("PlaneMesh_okmxr")
+mesh = SubResource("BoxMesh_05gs1")
 surface_material_override/0 = SubResource("StandardMaterial3D_w6nas")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("BoxShape3D_oa7um")
-
-[node name="VehicleBody3D" parent="." instance=ExtResource("1_n7lob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.843666, 0)
+shape = SubResource("ConvexPolygonShape3D_opbgc")
 
 [node name="World Objects" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World Objects"]
-transform = Transform3D(1.73205, 7.5, 0, -1, 12.9904, 0, 0, 0, 2, -10, 7, 16)
+transform = Transform3D(-4.5908e-08, -7.14979e-07, 2, -1, 12.9904, 0, -1.73205, -7.5, -8.74228e-08, 30, 7, 5)
 mesh = SubResource("BoxMesh_86ib2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="World Objects"]
-transform = Transform3D(-1.73205, -7.5, -1.74846e-07, -1, 12.9904, 0, 1.51421e-07, 6.55671e-07, -2, 0, 7, 16)
+transform = Transform3D(1.97329e-07, 1.37065e-06, -2, -1, 12.9904, 0, 1.73205, 7.5, 2.62269e-07, 30, 7, -5)
 mesh = SubResource("BoxMesh_86ib2")
 
-[node name="CameraGimble" type="Node3D" parent="."]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 15, 24, 0)
+[node name="RaceCar" parent="." instance=ExtResource("2_pwe3i")]
+transform = Transform3D(-0.00872653, 0, 0.999962, 0, 1, 0, -0.999962, 0, -0.00872653, -0.448682, 8.73622, -1.25089)
+collision_mask = 3
 
-[node name="InnerGimble" type="Node3D" parent="CameraGimble"]
-transform = Transform3D(-4.2222e-08, -0.258819, 0.965926, -1.13133e-08, 0.965926, 0.258819, -1, 0, -4.37114e-08, 8, 9.53674e-07, 0)
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.657372, 9.55239, -0.686012)
+curve = SubResource("Curve3D_gpaff")
 
-[node name="Camera3D" type="Camera3D" parent="CameraGimble/InnerGimble"]
+[node name="Track" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143383, 0.0322806, 0.226133)
+use_collision = true
+collision_layer = 2
+polygon = PackedVector2Array(0, 0, 0, 0.3, 2.7, 0.3, 2.7, 0)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
+material = SubResource("StandardMaterial3D_2qymu")
+
+[node name="OuterEdge" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164783, -0.000825927, -0.00171357)
+use_collision = true
+collision_layer = 2
+polygon = PackedVector2Array(0, 0, 0, 0.6, 0.3, 0.6, 0.3, 0)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
+
+[node name="InnerEdge" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164783, -0.000825927, -0.00171357)
+use_collision = true
+collision_layer = 2
+polygon = PackedVector2Array(2.7, 0, 2.7, 0.6, 3, 0.6, 3, 0)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
+material = SubResource("StandardMaterial3D_tnkqe")

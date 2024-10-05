@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d07ib8bamo04k"
+path="res://.godot/imported/debris-plate-a.obj-1d4bea1d9a264892444af5941cc642d8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/debris-plate-a.obj-1d4bea1d9a264892444af5941cc642d8.mesh"]
+
+source_file="res://Models/OBJ format/debris-plate-a.obj"
+dest_files=["res://.godot/imported/debris-plate-a.obj-1d4bea1d9a264892444af5941cc642d8.mesh", "res://.godot/imported/debris-plate-a.obj-1d4bea1d9a264892444af5941cc642d8.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

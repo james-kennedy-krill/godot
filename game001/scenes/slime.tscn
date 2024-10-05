@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_55obf"]
 [ext_resource type="Texture2D" uid="uid://cwgmhbe4ecxlf" path="res://assets/sprites/slime_green.png" id="1_gwn1m"]
 [ext_resource type="PackedScene" uid="uid://drpmw4psrj3ra" path="res://scenes/health_component.tscn" id="4_3j0sd"]
-[ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_h3rcg"]
-[ext_resource type="PackedScene" uid="uid://bam5ku408opgj" path="res://scenes/hitbox_component.tscn" id="5_wduha"]
+[ext_resource type="PackedScene" uid="uid://5x5xh3x84lqs" path="res://scenes/health_bar.tscn" id="4_af60v"]
+[ext_resource type="PackedScene" uid="uid://cqvpyl8jfm5rm" path="res://scenes/enemy_hitbox_component.tscn" id="5_lvre6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bseqy"]
 atlas = ExtResource("1_gwn1m")
@@ -42,8 +42,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbwxm"]
-size = Vector2(14, 13)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iid2h"]
+size = Vector2(10, 11)
 
 [node name="Slime" type="Node2D"]
 script = ExtResource("1_55obf")
@@ -64,14 +64,14 @@ target_position = Vector2(-9, 0)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_3j0sd")]
 
-[node name="HealthBar" type="Node2D" parent="HealthComponent"]
-script = ExtResource("4_h3rcg")
+[node name="HealthBar" parent="HealthComponent" instance=ExtResource("4_af60v")]
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_wduha")]
+[node name="EnemyHitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("5_lvre6")]
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, -6.5)
-shape = SubResource("RectangleShape2D_mbwxm")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitboxComponent"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_iid2h")
 
 [connection signal="health_change" from="HealthComponent" to="HealthComponent" method="_on_health_change"]
+[connection signal="body_entered" from="EnemyHitboxComponent" to="." method="_on_hitbox_component_body_entered"]

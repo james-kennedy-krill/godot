@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bnhcjjvjylk7e"
+path="res://.godot/imported/debris-drivetrain-axle.obj-1a21e078273c488cff034efe2bbb0ed4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/debris-drivetrain-axle.obj-1a21e078273c488cff034efe2bbb0ed4.mesh"]
+
+source_file="res://Models/OBJ format/debris-drivetrain-axle.obj"
+dest_files=["res://.godot/imported/debris-drivetrain-axle.obj-1a21e078273c488cff034efe2bbb0ed4.mesh", "res://.godot/imported/debris-drivetrain-axle.obj-1a21e078273c488cff034efe2bbb0ed4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

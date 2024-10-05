@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dveylmiay5m4y"
+path="res://.godot/imported/wheel-tractor-front.obj-5236609d5c314d49816806722f16abeb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wheel-tractor-front.obj-5236609d5c314d49816806722f16abeb.mesh"]
+
+source_file="res://Models/OBJ format/wheel-tractor-front.obj"
+dest_files=["res://.godot/imported/wheel-tractor-front.obj-5236609d5c314d49816806722f16abeb.mesh", "res://.godot/imported/wheel-tractor-front.obj-5236609d5c314d49816806722f16abeb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

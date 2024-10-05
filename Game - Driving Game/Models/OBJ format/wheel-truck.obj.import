@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cja8drqq2tufd"
+path="res://.godot/imported/wheel-truck.obj-ebac5c26ca42a49c2de9b07777f1bd02.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wheel-truck.obj-ebac5c26ca42a49c2de9b07777f1bd02.mesh"]
+
+source_file="res://Models/OBJ format/wheel-truck.obj"
+dest_files=["res://.godot/imported/wheel-truck.obj-ebac5c26ca42a49c2de9b07777f1bd02.mesh", "res://.godot/imported/wheel-truck.obj-ebac5c26ca42a49c2de9b07777f1bd02.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

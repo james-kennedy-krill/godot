@@ -1,0 +1,178 @@
+[gd_scene load_steps=21 format=3 uid="uid://dhfqo8n8ugxwv"]
+
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_r3twj"]
+[ext_resource type="PackedScene" uid="uid://sg7vkkl38wqu" path="res://box.tscn" id="2_jf8sv"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_rf8hc"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_uc4u3"]
+[ext_resource type="Script" path="res://player.gd" id="3_vp27x"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="4_3cpmo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jp1y"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o44vg"]
+material = SubResource("StandardMaterial3D_8jp1y")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_woifx"]
+albedo_color = Color(0.141496, 1.64487e-05, 0.144225, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wcyxu"]
+material = SubResource("StandardMaterial3D_woifx")
+size = Vector2(200, 200)
+
+[sub_resource type="Skin" id="Skin_lsvw3"]
+bind_count = 4
+bind/0/name = &""
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/1/name = &""
+bind/1/bone = -1
+bind/1/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/2/name = &""
+bind/2/bone = -1
+bind/2/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/3/name = &""
+bind/3/bone = -1
+bind/3/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3xduf"]
+data = PackedVector3Array(100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, 100, -100, 0, -100, 100, 0, -100)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f0xv3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4q2d"]
+
+[sub_resource type="Sky" id="Sky_ha5wy"]
+sky_material = SubResource("ProceduralSkyMaterial_b4q2d")
+
+[sub_resource type="Environment" id="Environment_xo477"]
+background_mode = 2
+sky = SubResource("Sky_ha5wy")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_4gb38"]
+frustum_focal_length = 55.0
+frustum_near = 0.02
+
+[sub_resource type="Resource" id="Resource_vcocw"]
+script = ExtResource("3_uc4u3")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_27fk3"]
+script = ExtResource("4_3cpmo")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 55.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Environment" id="Environment_dod3f"]
+background_mode = 2
+sky = SubResource("Sky_ha5wy")
+
+[node name="World" type="Node3D"]
+
+[node name="Boxes" type="Node3D" parent="."]
+
+[node name="Box" parent="Boxes" instance=ExtResource("2_jf8sv")]
+
+[node name="Box2" parent="Boxes" instance=ExtResource("2_jf8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Box3" parent="Boxes" instance=ExtResource("2_jf8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Box4" parent="Boxes" instance=ExtResource("2_jf8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Box5" parent="Boxes" instance=ExtResource("2_jf8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Box6" parent="Boxes" instance=ExtResource("2_jf8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="Box7" parent="Boxes" instance=ExtResource("2_jf8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Box8" parent="Boxes" instance=ExtResource("2_jf8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="Box9" parent="Boxes" instance=ExtResource("2_jf8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Cursor" type="Node3D" parent="Boxes"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Boxes/Cursor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+mesh = SubResource("PlaneMesh_o44vg")
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.0688)
+radius = 2.277
+height = 9.426
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5.0688)
+radius = 2.277
+height = 9.426
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 3.0688)
+radius = 2.277
+height = 9.426
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_wcyxu")
+skin = SubResource("Skin_lsvw3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3xduf")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45071, 0.95707, 0)
+floor_constant_speed = true
+script = ExtResource("3_vp27x")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_f0xv3")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(0.979761, -0.0994485, 0.169017, 0, 0.861887, 0.507051, -0.195952, -0.497242, 0.845085, 1, 3, 5)
+environment = SubResource("Environment_xo477")
+attributes = SubResource("CameraAttributesPhysical_4gb38")
+
+[node name="PhantomCameraHost" type="Node" parent="CharacterBody3D/Camera3D"]
+script = ExtResource("1_r3twj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.758533, 0.651635, 0, -0.651635, -0.758533, -4, 18.0601, -21)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "look_at_target")]
+transform = Transform3D(0.979761, -0.0994485, 0.169017, 0, 0.861887, 0.507051, -0.195952, -0.497242, 0.845085, -0.45071, 3.95707, 5)
+script = ExtResource("2_rf8hc")
+follow_mode = 2
+follow_target = NodePath("../CharacterBody3D")
+look_at_mode = 2
+look_at_target = NodePath("../CharacterBody3D")
+tween_resource = SubResource("Resource_vcocw")
+camera_3d_resource = SubResource("Resource_27fk3")
+environment = SubResource("Environment_dod3f")
+follow_offset = Vector3(1, 3, 5)
+follow_damping = true
+follow_damping_value = Vector3(0.2, 0.2, 0.2)

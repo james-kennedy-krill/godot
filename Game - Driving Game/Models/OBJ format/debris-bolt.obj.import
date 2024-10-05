@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bswr44c6vjint"
+path="res://.godot/imported/debris-bolt.obj-55e5b09aae3594d1f3f8047844dee9dd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/debris-bolt.obj-55e5b09aae3594d1f3f8047844dee9dd.mesh"]
+
+source_file="res://Models/OBJ format/debris-bolt.obj"
+dest_files=["res://.godot/imported/debris-bolt.obj-55e5b09aae3594d1f3f8047844dee9dd.mesh", "res://.godot/imported/debris-bolt.obj-55e5b09aae3594d1f3f8047844dee9dd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
