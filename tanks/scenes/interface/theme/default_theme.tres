@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cq8ihmcxtwvlf"]
+
+[ext_resource type="FontFile" uid="uid://dnswk0q0l2gwd" path="res://Space Shooter Visual Assets/Bonus/kenvector_future_thin.ttf" id="1_jlgfq"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_jlgfq")

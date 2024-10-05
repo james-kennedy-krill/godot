@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://vxsvr1ovkjmb"]
+
+[ext_resource type="PackedScene" uid="uid://drj6de863wku" path="res://scenes/interface/bar/bar.tscn" id="1_hercj"]
+[ext_resource type="Script" path="res://scripts/gui.gd" id="1_qteqt"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qteqt")
+
+[node name="Player1" parent="." instance=ExtResource("1_hercj")]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 372.0
+offset_bottom = 41.0
+
+[node name="Player2" parent="." instance=ExtResource("1_hercj")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -372.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 41.0
+grow_horizontal = 0
+size_flags_horizontal = 8

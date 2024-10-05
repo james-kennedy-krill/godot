@@ -1,0 +1,17 @@
+1. Charge shot - The longer you hold a button, the farther it shoots
+2. [x] Take damage - energy bars across the top and deplete energy when hit with projectiles
+3. [x] explode / lose - when your energy bar is empty, you lose!
+  3a. make sound, have effect when you lose / blow up
+4. music
+5. power ups
+-- a. fly?
+   b. heat seaker
+   c. shield
+   d. bigger projectiles
+   e. speed up
+6. buffs
+   a. poison
+   b. slow
+   c. freeze
+   d. slow shoot
+   e. grow (more to hit)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://baadtrqmuckaf"]
+
+[ext_resource type="Script" path="res://scripts/beam.gd" id="1_1bb1o"]
+[ext_resource type="Texture2D" uid="uid://sj3e2p41cyhf" path="res://Space Shooter Visual Assets/PNG/Parts/beamLong1.png" id="1_ghael"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnl8u"]
+size = Vector2(53, 454)
+
+[node name="Beam" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_1bb1o")
+
+[node name="BeamSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -228)
+scale = Vector2(7.17559, 7.17559)
+texture = ExtResource("1_ghael")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-29, -221)
+shape = SubResource("RectangleShape2D_cnl8u")

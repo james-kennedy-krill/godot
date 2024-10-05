@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://oqmlnthc0lmu"]
+
+[ext_resource type="Texture2D" uid="uid://chumuk7wm4ucx" path="res://Space Shooter Visual Assets/PNG/Parts/engine1.png" id="1_1krgu"]
+[ext_resource type="Script" path="res://scripts/tank.gd" id="1_naq48"]
+[ext_resource type="PackedScene" uid="uid://6rwodttxndbo" path="res://scenes/projectile.tscn" id="2_dh5gb"]
+[ext_resource type="Texture2D" uid="uid://culcgifkw2hef" path="res://Space Shooter Visual Assets/PNG/Parts/cockpitBlue_0.png" id="2_p1w85"]
+[ext_resource type="Texture2D" uid="uid://johopacg8yb2" path="res://Space Shooter Visual Assets/PNG/Parts/gun01.png" id="3_mxq25"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_naq48")
+projectile_scene = ExtResource("2_dh5gb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(9, 4, 10, -1, -9, -1, -9, 4, -30, 2, -30, -32, -18, -34, -24, -64, 0, -79, 24, -63, 18, -34, 30, -32, 30, 2)
+
+[node name="TankParts" type="Node2D" parent="."]
+position = Vector2(0, -37)
+
+[node name="Engine1" type="Sprite2D" parent="TankParts"]
+position = Vector2(-20, 22)
+rotation = 1.5708
+texture = ExtResource("1_1krgu")
+
+[node name="Engine2" type="Sprite2D" parent="TankParts"]
+position = Vector2(20, 22)
+rotation = -1.5708
+texture = ExtResource("1_1krgu")
+
+[node name="Cockpit" type="Sprite2D" parent="TankParts"]
+texture = ExtResource("2_p1w85")
+
+[node name="Gun01" type="Node2D" parent="TankParts"]
+position = Vector2(0, -34)
+
+[node name="Muzzle" type="Marker2D" parent="TankParts/Gun01"]
+position = Vector2(0, -41)
+rotation = -1.5708
+
+[node name="GunSprite" type="Sprite2D" parent="TankParts/Gun01"]
+rotation = 3.14159
+texture = ExtResource("3_mxq25")
+offset = Vector2(0, 16)

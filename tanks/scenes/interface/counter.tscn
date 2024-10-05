@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://gb04u2rer57m"]
+
+[ext_resource type="Texture2D" uid="uid://bd76vq8cqjces" path="res://Space Shooter Visual Assets/PNG/UI/buttonBlue.png" id="1_hnm3s"]
+[ext_resource type="Texture2D" uid="uid://b3eooxkbfvlkp" path="res://Space Shooter Visual Assets/PNG/UI/playerLife1_blue.png" id="2_4hvlc"]
+[ext_resource type="Theme" uid="uid://cq8ihmcxtwvlf" path="res://scenes/interface/theme/default_theme.tres" id="3_c8anr"]
+
+[node name="Counter" type="NinePatchRect"]
+offset_right = 225.0
+offset_bottom = 78.0
+texture = ExtResource("1_hnm3s")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 43.0
+offset_bottom = 43.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_4hvlc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 225.0
+offset_bottom = 59.0
+theme = ExtResource("3_c8anr")
+text = "00000"
+horizontal_alignment = 1
+vertical_alignment = 1

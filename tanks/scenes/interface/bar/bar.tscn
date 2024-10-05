@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://drj6de863wku"]
+
+[ext_resource type="Script" path="res://scripts/bar.gd" id="1_d1oi3"]
+[ext_resource type="Texture2D" uid="uid://dx0wd4ajjqyme" path="res://Space Shooter Visual Assets/Bonus/PNG/ProgressBar_01/BarV1_Bar.png" id="1_hi4vq"]
+[ext_resource type="Texture2D" uid="uid://f3jxokgdor2f" path="res://Space Shooter Visual Assets/Bonus/PNG/ProgressBar_01/BarV1_ProgressBarBorder.png" id="2_jhi8f"]
+[ext_resource type="Texture2D" uid="uid://c0f3huvdp4k6q" path="res://Space Shooter Visual Assets/Bonus/PNG/ProgressBar_01/BarV1_ProgressBar.png" id="3_rr58w"]
+
+[node name="Bar" type="HBoxContainer"]
+offset_right = 356.0
+offset_bottom = 25.0
+script = ExtResource("1_d1oi3")
+
+[node name="HPCounter" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(80, 25)
+layout_mode = 2
+texture = ExtResource("1_hi4vq")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="HPCounter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12/13	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+value = 75.0
+texture_under = ExtResource("1_hi4vq")
+texture_over = ExtResource("2_jhi8f")
+texture_progress = ExtResource("3_rr58w")
